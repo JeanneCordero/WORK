@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Questions Book</title>
+  
+  <!-- Link to Google Fonts for "Poppins" font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif; /* Apply Poppins globally */
+    }
+
+    body {
+      background: linear-gradient(to right, #1b5e20, #004d40); /* Dark green gradient */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #333;
+    }
+
+    #login-page, #question-book {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      background-color: #ffffff; /* White background for contrast */
+    }
+
+    #question-book {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      background-color: #002d19;
+
+
+    }
+
+    h1 {
+      margin-bottom: 1em;
+      color: #1b5e20; /* Dark green */
+      font-weight: bold;
+    }
+
+    #login-form input {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    #login-form button {
+      width: 100%;
+      padding: 12px;
+      background-color: #004d40; /* Dark green */
+      color: #ffffff; /* White text */
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #login-form button:hover {
+      background-color: #00332e; /* Darker green */
+    }
+
+    #error-msg {
+      color: red;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    header, footer {
+      width: 100%;
+      text-align: center;
+      padding: 15px;
+      color: white;
+      position: fixed;
+      left: 0;
+    }
+
+    header {
+      background-color: #1b5e20; /* Dark green */
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+
+    header h1 {
+      font-size: 22px;
+      margin: 0;
+      font-weight: 600;
+      color: #002d19; /* Orange color to make it stand out */
+    }
+
+    header button {
+      background-color: #004d40; /* Dark green */
+      color: #ffffff; /* White text */
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    header button:hover {
+      background-color: #00332e; /* Darker green */
+    }
+
+    footer {
+      background-color: #002d19; /* Darker green */
+      bottom: 0;
+      font-size: 14px;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-top: 80px;
+      margin-bottom: 80px;
+      width: 100%;
+    }
+
+    #question-container {
+      width: 100%;
+      max-width: 300px;
+      padding: 20px;
+      background-color: #002d19; /* Darker green */
+      color: #ffffff; /* White text for contrast */
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 300px;
+      margin-top: 10px;
+    }
+
+    .nav-buttons button {
+      padding: 10px;
+      background-color: #004d40; /* Dark green */
+      color: #ffffff; /* White text */
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-buttons button:hover {
+      background-color: #00332e; /* Darker green */
+    }
+
+    #question-book {
+    max-width: 800px; /* Increased width for the question book */
+  }
+
+  main {
+    width: 100%;
+    max-width: 800px; /* Adjusted to match question-book width */
+  }
+
+  #question-container {
+    max-width: 750px; /* Increased width for question container */
+  }
+
+  #question-container {
+    max-width: 750px; /* Adjust width if needed */
+    font-family: 'Arial', sans-serif; /* Change font here */
+    font-size: 18px; /* Adjust font size if desired */
+    color: #f0f0f0; /* Light text color for contrast */
+  }
+
+  #question-text {
+    font-weight: bold;
+    font-size: 22px; /* Adjust font size for the question text */
+    text-transform: uppercase;
+  }
+
+  </style>
+</head>
+<body>
+
+  <div id="login-page">
+    <h1>Login</h1>
+    <form id="login-form">
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+      <p id="error-msg"></p>
+    </form>
+  </div>
+
+  <div id="question-book" style="display: none;">
+    <header>
+      <h1>WORK SMART NOT HARD</h1>
+      <button onclick="logout()">Logout</button>
+    </header>
+
+    <main>
+      <div id="question-container">
+        <p id="question-text"></p>
+        <p id="answer-text"></p>
+      </div>
+      <div class="nav-buttons">
+        <button onclick="prevQuestion()">Previous</button>
+        <button onclick="nextQuestion()">Next</button>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2024 Jeanne Cordero. Keep pushing forward!</p>
+    </footer>
+  </div>
+
+  <script>
+    const correctUsername = "admin";
+    const correctPassword = "123";
+    
+    
+    const loginPage = document.getElementById("login-page");
+    const questionBook = document.getElementById("question-book");
+    const errorMsg = document.getElementById("error-msg");
+
+    const questions = [
+      { question: "Tell me about yourself ?",answer: "My name is Jeanne Cordero, a recent Computer Science graduate. I have hands-on experience in website development and customer-facing projects, which developed my technical and communication skills.Through my experience creating websites and handling customer-focused projects, I learned to manage various queries, quickly solve issues, and deliver clear and user-friendly solutions.I’m very patient and attentive, and I enjoy helping customers navigate challenges. My programming background also helps me understand and address technical questions more efficiently.I’m excited about a role at TaskUs because it aligns perfectly with my goal of providing excellent support while growing my skills in customer relations within a forward-thinking company.I’m enthusiastic about the opportunity to contribute to TaskUs and learn from its dedicated team." },
+      { question: "1.) What does customer service mean to you? ",answer: "Customer service, to me, is about being present and attentive to each customer’s needs, ensuring they feel understood and supported. I believe that creating a welcoming experience where customers feel appreciated and respected is essential for fostering lasting connections." },
+      { question: "2.) Why do you want to work in customer service?", answer: "I enjoy interacting with people and am excited to work in a role where I can make a positive impact on others’ experiences. I’m drawn to customer service because it allows me to problem-solve, communicate, and contribute to the success of a team." },
+      { question: "3.) What are the qualities of a good customer service representative?", answer: "I think patience, empathy, and strong communication skills are essential. Being attentive and respectful also helps in understanding the customer’s perspective, and clear communication ensures they feel heard and supported." },
+      { question: "4.) Describe a time when you turned an unhappy person into a satisfied one.", answer: "In school, I was part of a group project where a team member felt frustrated with the workload. I offered to help by taking on some of their tasks, and we worked out a plan together. In the end, they felt more supported, and the project went smoothly. This experience taught me the importance of empathy and teamwork." },
+      { question: "5.) How do you handle stressful situations?", answer: "I stay calm by focusing on what I can control and prioritizing tasks. When things get overwhelming, I take a step back to organize and break tasks down, allowing me to tackle them effectively without getting flustered." },
+      { question: "6.) If a customer asks a question you don’t know the answer to, what would you do?", answer: "I’d tell the customer that I want to make sure I provide accurate information and would ask if they can hold while I find the answer, or I’d offer to follow up with them. My goal would be to ensure they feel their question is important." },
+      { question: "7.) How would you deal with a rude or angry customer?", answer: "I’d focus on staying calm and letting them express their concerns esp. acknowledging their frustrations .By listening without taking it personally, I could understand their issue and address it professionally. I’d aim to resolve the problem so they leave feeling better." },
+      { question: "8.) Tell me about a time when you went above and beyond for someone.", answer: "During my internship, I noticed a colleague struggling with a task due to a tight deadline. I offered to help them finish their work on time. It was a small gesture, but it made a difference for them and helped the team stay on track." },
+      { question: "9.) How would you handle a situation where a customer wants a refund that goes against company policy?", answer: "I’d explain the policy politely and offer any alternatives that could address their concern. If they still seem dissatisfied, I’d suggest escalating the issue to a supervisor to ensure they feel heard." },
+      { question: "10.) What would you do if you had to handle multiple customers simultaneously?", answer: "I’d prioritize each customer based on their needs and keep them informed of any delays. Staying organized and focused on each person’s question would help me manage multiple interactions without sacrificing quality." },
+      { question: "11.) What CRM tools are you familiar with?", answer: "While I’m new to customer service software, I’m a quick learner and am confident I could pick up tools like Salesforce or Zendesk with some training. I’m eager to learn and become efficient with any tools used." },
+      { question: "12.) How would you familiarize yourself with our products or services?", answer: "I’d start by researching on your website, reviewing any product manuals or resources, and asking team members for guidance. I’d also take notes to help me remember details and continuously update my understanding." },
+      { question: "13.) How do you stay organized and ensure no customer requests fall through the cracks?", answer: "I rely on tools like to-do lists and calendar reminders to keep track of tasks. I’d also prioritize follow-ups and make notes to ensure every customer’s request is handled promptly." },
+      { question: "14.) Describe a time when you worked as part of a team to solve a problem.", answer: "In college, we worked on a project with tight deadlines. I coordinated with my team, divided tasks based on each person’s strengths, and made sure we checked in regularly. This approach helped us complete the project successfully." },
+      { question: "15.) How do you handle constructive criticism?", answer: "I appreciate constructive criticism because it helps me improve. I take feedback positively, reflect on how I can apply it, and use it as a learning opportunity." },
+      { question: "16.) What motivates you to go above and beyond for customers?", answer: "Seeing someone leave happy and knowing I made a positive difference motivates me. I find satisfaction in helping others, and when customers are pleased, it makes my job more fulfilling." },
+      { question: "17.) How do you manage customer expectations?", answer: "I believe in clear communication and being realistic with what I can provide. I’d make sure to set expectations that align with company policies and work hard to meet or exceed them." },
+      { question: "18.) What would you do if a customer reported a recurring issue?", answer: "I’d apologize for the inconvenience, note the details, and inform any relevant departments to address the root cause. I’d follow up with the customer to ensure they know I took their feedback seriously." },
+      { question: "19.) How would you handle a language barrier or a difficult-to-understand customer?", answer: "I’d stay patient and ask clarifying questions to make sure I understand them correctly. If possible, I might use simpler language or rephrase to avoid confusion." },
+      { question: "20.) How do you handle confidential information about customers?", answer: "I understand that customer privacy is important, and I would strictly follow company policies to protect any sensitive information, keeping all data secure and confidential." },
+      { question: "21.) Why should we hire you?", answer: "I’m a quick learner and passionate about helping others. My adaptability, strong work ethic, and willingness to go the extra mile make me confident that I’d make a positive impact on your customer service team." },
+      { question: "22.) Tell me about yourself and your experience in customer service.", answer: "I’m a recent graduate with a strong interest in customer service. I’ve had experience volunteering where I helped customers, which taught me the importance of clear communication and empathy." },
+      { question: "23.) Why do you want to work in customer service, and why do you think you’re a good fit?", answer: "I enjoy helping people and solving problems. I believe my patience, communication skills, and positive attitude make me a good fit for customer service." },
+      { question: "24.) How would you handle an irate customer over the phone or in person?", answer: "I would listen to the customer without interrupting, acknowledge their concerns, and calmly offer solutions to resolve the issue." },
+      { question: "25.) Describe a time when you went above and beyond to help a customer.", answer: "During a volunteering event, I helped a customer find an item that wasn’t available by directing them to a nearby store that carried it. They were very appreciative." },
+      { question: "26.) How do you prioritize tasks during high-volume periods?", answer: "I prioritize tasks based on urgency, focusing on resolving customer issues first, and staying organized to ensure everything is handled efficiently." },
+      { question: "27.) How do you ensure you understand a customer’s needs when they’re unclear?", answer: "I ask clarifying questions to make sure I understand their needs, and I summarize what they said to confirm accuracy before proceeding." },
+      { question: "28.) Describe a time you dealt with a difficult customer. What was the outcome?", answer: "Once, a customer was upset about a delay. I listened, empathized, and kept them updated. They appreciated my transparency, and the situation ended positively." },
+      { question: "29.) What do you think is the most important skill for a customer service representative to have?", answer: "Empathy, because understanding the customer’s perspective helps create a positive experience even in challenging situations." },
+      { question: "30.) If you don’t know the answer to a customer’s question, what steps would you take?", answer: "I’d let them know I’ll find the answer and then consult my team or resources to get back to them with accurate information." },
+      { question: "31.) How would you respond to negative feedback or criticism from a customer?", answer: "I’d thank them for their feedback, apologize if needed, and focus on what can be done to improve their experience." },
+      { question: "32.) What methods do you use to keep a positive attitude during a challenging shift?", answer: "I remind myself of the value of helping people, take short breaks if possible, and focus on staying calm and friendly." },
+      { question: "33.) Describe a time when you worked in a team to solve a problem.", answer: "In college, we worked together to resolve a project issue by dividing tasks based on each member’s strengths. It helped us complete the project successfully." },
+      { question: "34.) How do you manage customer expectations if there’s a delay in service or product availability?", answer: "I communicate transparently about the delay, apologize, and give them realistic timelines or alternatives if available." },
+      { question: "35.) Can you tell us about a time when you handled multiple requests simultaneously?", answer: "During an event, I assisted multiple guests by managing tasks in order of priority, which helped me address everyone’s needs efficiently." },
+      { question: "36.) How do you handle situations where a customer is wrong or has unrealistic expectations?", answer: "I respectfully explain any limitations while focusing on what I can do to help meet their needs." },
+      { question: "37.) What do you do if you’re unable to meet a customer’s needs?", answer: "I try to offer alternatives or direct them to someone who can assist better, making sure they still feel supported." },
+      { question: "38.) Describe a time you received feedback from a manager. How did you handle it?", answer: "I received feedback on improving my response time. I appreciated it and adjusted my workflow, which helped me work more efficiently." },
+      { question: "39.) What do you know about our company and our approach to customer service?", answer: "I know you prioritize customer satisfaction and quality service, focusing on creating a positive experience for every customer." },
+      { question: "40.) How would you respond if a customer asked for a service or product feature that we don’t offer?", answer: "I’d kindly explain that we don’t offer that feature but highlight other solutions we provide that could still meet their needs." },
+      { question: "41.) What motivates you to do well in a customer service role?", answer: "Knowing I can help people and make their experience positive motivates me. Seeing a happy customer makes me feel accomplished." },
+      { question: "42.) How do you prioritize tasks when dealing with multiple requests?", answer: "I prioritize tasks by assessing their urgency and the needs of each customer, focusing on resolving urgent issues first and ensuring I keep each customer informed along the way." },
+      { question: "43.) What steps do you take to maintain a positive attitude on challenging days?", answer: "I remind myself of my purpose in helping others, take short mental breaks if possible, and focus on each task individually to avoid becoming overwhelmed." },
+      { question: "44.) Describe a time when you helped resolve a team conflict.", answer: "During a group project, there was a disagreement on task allocation. I facilitated a conversation, allowing each person to voice their concerns, and we reallocated tasks in a way that suited everyone’s strengths." },
+      { question: "45.) How would you assist a customer who doesn’t fully understand the product or service?", answer: "I’d use simple, clear language to explain the product or service, and I’d take the time to answer any questions they have, ensuring they feel comfortable and informed." },
+      { question: "46.) How do you manage stress in high-demand environments?", answer: "I maintain calm by organizing my tasks, focusing on one task at a time, and reminding myself to breathe and reset when needed." },
+      { question: "47.) Describe how you handle a situation where you disagree with a customer.", answer: "I listen to their viewpoint and validate their feelings while politely explaining my perspective. My goal is to find common ground and resolve the issue amicably." },
+      { question: "48.) How do you ensure clarity in your communication?", answer: "I practice active listening, provide concise information, and ask if there are any questions to ensure the customer fully understands." },
+      { question: "49.) What techniques do you use to stay organized?", answer: "I use digital tools and to-do lists to keep track of tasks, deadlines, and customer interactions, allowing me to stay focused and efficient." },
+      { question: "50.) How do you adapt your customer service approach for different demographics?", answer: "I tailor my communication style and approach based on the demographic I’m interacting with, being mindful of cultural differences and preferences." }
+    ];
+
+    let currentQuestionIndex = 0;
+
+    document.getElementById("login-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (username === correctUsername && password === correctPassword) {
+        loginPage.style.display = "none";
+        questionBook.style.display = "block";
+        showQuestion();
+      } else {
+        errorMsg.textContent = "Incorrect username or password.";
+      }
+    });
+
+    function showQuestion() {
+      const questionText = document.getElementById("question-text");
+      const answerText = document.getElementById("answer-text");
+      questionText.textContent = questions[currentQuestionIndex].question;
+      answerText.textContent = questions[currentQuestionIndex].answer;
+    }
+
+    function nextQuestion() {
+      if (currentQuestionIndex < questions.length - 1) {
+        currentQuestionIndex++;
+        showQuestion();
+      }
+    }
+
+    function prevQuestion() {
+      if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        showQuestion();
+      }
+    }
+
+    function logout() {
+      loginPage.style.display = "flex";
+      questionBook.style.display = "none";
+      document.getElementById("login-form").reset();
+      errorMsg.textContent = "";
+      currentQuestionIndex = 0;
+    }
+  </script>
+
+</body>
+</html>
